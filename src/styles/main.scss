@@ -1,0 +1,44 @@
+@use "./variables" as variables;
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+html {
+  /*
+    * Ao fazer isso, você muda o padrão do navegador. Você força 1rem a ser igual a 10px (16px * 62.5% = 10px).
+
+    * Aí, quando você escrever padding: 2rem;, você sabe que está escrevendo 20px, e sua vida fica muito mais fácil.
+  */
+  font-size: 62.5%; // 1rem = 10px
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit; // * Remove a cor azul/roxa e faz herdar do pai
+}
+
+body {
+  /*
+    ? A propriedade "min-height: 100vh" é perfeito pro meu projeto pelos seguintes motivos:
+      * 1- Se a página tiver pouco conteúdo (como agora), ela deve preencher a tela (o footer não pode "flutuar" no meio).
+
+      * 2- Se a página tiver muito conteúdo, ela deve rolar normalmente.
+  */
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  min-height: 100vh;
+  height: 100%;
+  max-width: 100vw;
+  width: 100%;
+  display: flex;
+  background-color: variables.$color-grey-light;
+}
+
+#root {
+  flex: 1; // * Faz o div React crescer para ocupar o espaço do body.
+}

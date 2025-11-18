@@ -1,0 +1,53 @@
+@use "../../styles/variables" as variables;
+
+.todo-form {
+  display: flex;
+  width: 80%;
+  margin: 0 auto 4rem;
+
+  &__input {
+    flex: 1; // ? Faz o input crescer e ocupar o espaço disponível.
+
+    border: 1px solid variables.$color-grey-light;
+    padding: 1.4rem 1.6rem;
+    font-size: 1.6rem; // ? 16px
+    background-color: variables.$color-white;
+    color: variables.$color-grey-dark;
+
+    // * Colando o input no botão.
+    border-radius: 8px 0 0 8px;
+
+    &::placeholder {
+      color: variables.$color-grey-medium;
+    }
+
+    &:focus {
+      // * Quando o usuário clica.
+      outline: none;
+      border-color: variables.$color-signal-info;
+      box-shadow: 0 0 0 2px hsla(210, 80%, 50%, 0.2); // ? Sombra suave azul.
+    }
+  }
+
+  &__button {
+    border: none;
+    padding: 1.4rem 2rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    background-color: variables.$color-signal-info;
+    color: variables.$color-white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    // * Colando o botão no input.
+    border-radius: 0 8px 8px 0;
+
+    &:hover {
+      background-color: variables.$color-signal-info-dark;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

@@ -1,0 +1,120 @@
+@use "../../styles/variables" as variables;
+
+.todo-item {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: variables.$color-white;
+  border: 1px solid variables.$color-grey-light;
+  border-radius: 8px;
+  margin: 0 auto;
+  padding: 1.2rem 1.6rem;
+
+  &--complete {
+    background-color: variables.$color-grey-lightest;
+    border-color: transparent;
+  }
+
+  &__left-side {
+    width: max-content; // ? Achei muito melhor usar "max-content" nesse caso.
+    // width: clamp(8rem, 10rem + 1vw, 12rem);
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+
+    &__text {
+      font-size: 1.6rem;
+      color: variables.$color-grey-dark;
+      line-height: 1.4;
+
+      &--complete {
+        color: variables.$color-grey-medium;
+        // * Deixa com um traço no texto quando a tarefa é concluída.
+        text-decoration: line-through;
+      }
+    }
+
+    &__check-button {
+      background-color: transparent;
+      border: 1px solid variables.$color-grey-medium;
+      cursor: pointer;
+
+      font-size: 1.4rem;
+      // color: variables.$color-grey-medium;
+      color: transparent;
+      padding: 0.1rem;
+      border-radius: 6px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transition: all 0.2s ease;
+
+      &--complete {
+        color: variables.$color-white;
+        background-color: variables.$color-signal-success;
+        border-color: variables.$color-signal-success;
+
+        &:hover {
+          // ! Hover pra quando ja está marcado.
+          background-color: hsla(145, 63%, 42%, 0.1);
+          border-color: transparent;
+        }
+      }
+
+      &:hover {
+        // ! Hover pra quando está desmarcado.
+        box-shadow: 0 0 2px 1px hsla(0, 0%, 50%, 0.4);
+      }
+    }
+  }
+
+  &__right-side {
+    // * Container dos botões.
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem;
+
+    &__delete-button {
+      // ! Resetando a aparência do botão.
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      // * Estilizando o ícone (ícones do react-icons são como texto).
+      font-size: 1.6rem;
+      color: variables.$color-grey-medium;
+      padding: 0.5rem;
+      border-radius: 6px;
+      // * Centralizando.
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: variables.$color-signal-error;
+        background-color: variables.$color-grey-lightest;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px hsla(0, 70%, 50%, 0.2);
+      }
+    }
+  }
+
+  /*
+  # Traduzindo esse &:not(las-child):
+    * 1- :last-child (O "Último Filho"): É uma "pseudo-classe" do CSS. Ela seleciona o item que é o último filho de seu container-pai (no caso, o último <li> dentro do <ul>).
+
+    * 2- :not(...) (O "Não"): É outra pseudo-classe. Ela é uma negação, significando "selecione qualquer coisa que NÃO SEJA o que está dentro dos parênteses".
+  */
+  &:not(:last-child) {
+    // * Então todos os itens terão as propriedades aqui escritas, menos último item.
+    margin-bottom: 1rem;
+  }
+}

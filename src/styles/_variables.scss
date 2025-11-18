@@ -1,0 +1,53 @@
+// ! -- Rápida explicação de como funciona variáveis no Sass --
+/* 
+  # No Sass:
+    * Em Python, você faria: cor_primaria = #cor;
+    * Em Sass, você faz: $cor-primaria: #cor ;
+
+    * 1- "$": É o prefixo que diz ao Sass: "Ei, a palavra a seguir é uma variável, não uma propriedade CSS."
+
+    * 2- "cor-primaria:" O nome da variável. (Por convenção, em Sass usamos hífens, o "kebab-case", em vez do "snake_case" do Python.
+*/
+
+// ! -- Rápida explicação de como funciona o HSL --
+/*
+  # Pense no HSL assim:
+    * 1- H (Hue/Matiz): A cor no círculo cromático (0 = Vermelho, 120 = Verde, 240 = Azul, etc.).
+
+    * 2- S (Saturation/Saturação): A intensidade da cor. 0% é sempre um tom de cinza, 100% é a cor super vibrante.
+
+    * 3- L (Lightness/Luminosidade): O brilho. 0% é preto, 50% é a cor "pura", 100% é branco.
+*/
+
+// 1. Breakpoints:
+$bp-sm: 600px; // ? "bp" = breakpoint e "sm" = small e assim por diante.
+$bp-md: 900px;
+$bp-lg: 1200px;
+
+/*
+  ! -- Nossa Paleta HSL Sistemática --
+
+  * - Para cores NEUTRAS, mantemos a Saturação (S) em 0%.
+  * - Parac cores de SINAL, usamos Matizes (H) específicos.
+*/
+
+// ! --- Paleta de Cores Neutras (Grayscale) ---
+$color-white: hsl(0, 0%, 100%);
+$color-grey-lightest: hsl(0, 0%, 97%); // ? Para fundos "quase brancos".
+$color-grey-light: hsl(0, 0%, 90%); // ? Para bordas.
+$color-grey-medium: hsl(0, 0%, 50%); // ? Para texto secundário.
+$color-grey-dark: hsl(0, 0%, 20%); // ? Para texto principal.
+$color-black: hsl(0, 0%, 10%); // ? Um "preto" mais suave que 0%.
+
+// ! --- Paleta de Cores de Sinal ---
+// * (Note que a Saturação e Luminosidade são consistentes).
+$color-signal-info: hsl(205, 85%, 45%); // ? Azul (como o botão).
+$color-signal-info-dark: hsl(205, 85%, 35%); // ? Azul para o "hover".
+$color-signal-success: hsl(145, 63%, 42%); // ? Verde.
+$color-signal-warning: hsl(45, 90%, 50%); // ? Amarelo.
+$color-signal-error: hsl(0, 79%, 63%); // ? Vermelho.
+
+// ! --- Cores de Marca ---
+$color-brand-linkedin: hsl(210, 80%, 50%);
+$color-brand-linkedin-dark: hsl(210, 80%, 40%);
+$color-brand-github: $color-black;
