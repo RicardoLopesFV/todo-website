@@ -22,7 +22,6 @@ export const TodoToolbar = ({
           onChange={(event) => setSearchInputText(event.target.value)}
         />
       </div>
-
       <button
         className="todo-toolbar__add-button"
         /*

@@ -1,6 +1,7 @@
 @use "../../styles/variables" as v;
 
 .todo-toolbar {
+  position: relative;
   width: 80%;
   display: flex;
   gap: 1.5rem;
@@ -64,6 +65,18 @@
     &:hover {
       background-color: v.$color-signal-info-dark;
       transform: translateY(-2px);
+    }
+
+    @media (max-width: v.$bp-sm) {
+      position: fixed;
+      bottom: 1.6rem;
+      right: 1.6rem;
+      height: 50px;
+      width: 50px;
+
+      // ! Para deixar o botão redondo.
+      padding: 1.6rem;
+      border-radius: 50%;
     }
   }
 }
