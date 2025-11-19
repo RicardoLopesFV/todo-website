@@ -1,53 +1,124 @@
-@use "../../styles/variables" as variables;
+@use "../../styles/variables" as v;
 
-.todo-form {
+// 1. O Overlay (Fundo Escuro)
+.todo-modal-overlay {
+  position: fixed; // Fixa na tela inteira
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  // O efeito de "desligar a luz"
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px); // O desfoque (Blur)
+
+  z-index: 1000; // Garante que fique no topo
   display: flex;
-  width: 80%;
-  margin: 0 auto 4rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
 
-  &__input {
-    flex: 1; // ? Faz o input crescer e ocupar o espaço disponível.
+  // Animação suave
+  animation: fadeIn 0.2s ease-out;
+}
 
-    border: 1px solid variables.$color-grey-light;
-    padding: 1.4rem 1.6rem;
-    font-size: 1.6rem; // ? 16px
-    background-color: variables.$color-white;
-    color: variables.$color-grey-dark;
+// 2. A Janela (Modal)
+.todo-modal-content {
+  background-color: v.$color-white;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
-    // * Colando o input no botão.
-    border-radius: 8px 0 0 8px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
 
-    &::placeholder {
-      color: variables.$color-grey-medium;
+    h2 {
+      font-size: 2rem;
+      color: v.$color-grey-dark;
     }
 
-    &:focus {
-      // * Quando o usuário clica.
-      outline: none;
-      border-color: variables.$color-signal-info;
-      box-shadow: 0 0 0 2px hsla(210, 80%, 50%, 0.2); // ? Sombra suave azul.
+    .close-button {
+      background: none;
+      border: none;
+      color: v.$color-grey-medium;
+      font-size: 2rem;
+      cursor: pointer;
+      display: flex;
+      &:hover {
+        color: v.$color-signal-danger;
+      }
     }
   }
 
-  &__button {
-    border: none;
-    padding: 1.4rem 2rem;
+  &__input {
+    width: 100%;
+    padding: 1.5rem;
     font-size: 1.6rem;
-    font-weight: 700;
-    background-color: variables.$color-signal-info;
-    color: variables.$color-white;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-
-    // * Colando o botão no input.
-    border-radius: 0 8px 8px 0;
-
-    &:hover {
-      background-color: variables.$color-signal-info-dark;
-    }
+    border: 1px solid v.$color-grey-light;
+    border-radius: 8px;
+    margin-bottom: 2.5rem;
+    color: v.$color-grey-dark;
 
     &:focus {
       outline: none;
+      border-color: v.$color-signal-info;
     }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end; // Botões à direita
+    gap: 1rem;
+
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.6rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-cancel {
+      background-color: transparent;
+      color: v.$color-grey-medium;
+      &:hover {
+        background-color: v.$color-grey-lightest;
+      }
+    }
+
+    .btn-confirm {
+      background-color: v.$color-signal-info;
+      color: v.$color-white;
+      &:hover {
+        background-color: v.$color-signal-info-dark;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

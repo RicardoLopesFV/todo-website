@@ -9,7 +9,7 @@ export const TodoList = ({ tasks, onExcluirTasks, onCheckComplete }) => {
   /*
    * Apenas usando condicional para caso não tenha nenhuma tarefa para renderizar.
    */
-  if (tasks.lenght === 0) {
+  if (!tasks || tasks.length === 0) {
     return (
       <p className="todo-list__empty-message">
         No tasks were found. Try to add one!

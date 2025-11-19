@@ -1,8 +1,9 @@
-import { useState } from "react";
-import "./App.scss";
+import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { TodoForm } from "./components/TodoForm";
 import { TodoList } from "./components/TodoList";
+import { TodoToolbar } from "./components/TodoToolbar";
+import "./App.scss";
 /*
   ! Primeiro projeto React que estou fazendo para aprender e documentar tudo que eu achar necessário pra mim aprender de uma vez por TODAS!!!
 */
@@ -16,7 +17,32 @@ export const App = () => {
       * Tanto o TodoForm quanto o TodoList precisam dessa lista, então o gerente "App" vai solicitar os nomes das tarefas e cria-las em uma lista.
       * O "App" irá passar a lista de tarefas para o TodoList, para que assim o TodoList possa mostrar na tela.
   */
-  const [tasks, setTasks] = useState([]);
+
+  // ! --- Estados ---
+
+  // ! Estado da lista de tarefas. (Utilizando agora o LocalStorage).
+  const [tasks, setTasks] = useState(() => {
+    // * Aqui eu pego a lista salva no localStorage.
+    const saved = localStorage.getItem("tasks");
+    /*
+     * Aqui eu retorno o arquivo JSON convertido em um array de objetos, senão tiver nada ele retorna uma lista vazia.
+     */
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  // ! Estado do Modal (Aberto / Fechado).
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // ! Estado do texto da busca.
+  const [searchInputText, setSearchInputText] = useState("");
+
+  // ! Usando o useEffect para salvar tudo no LocalStorage.
+  useEffect(() => {
+    // * Convertendo de objeto pra arquivo JSON.
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  // ! --- Funções do "Gerente" App ---
 
   const handleAddTasks = (tasksName) => {
     // * Agora criamos o objeto da tarefa
@@ -51,37 +77,50 @@ export const App = () => {
   };
 
   const handleCompleteTasks = (idToComplete) => {
+    // * Pegando a lista anterior que já existia.
     setTasks((prevTasks) => {
+      // * Fazendo uma busca pelas tarefas pélo id.
       return prevTasks.map((task) => {
         if (task.id !== idToComplete) {
           return task;
         }
-
+        // * Se for encontrado pelo id invertemos o valor de "isComplete".
         return { ...task, isComplete: !task.isComplete };
       });
     });
   };
 
-  // const handleEditTasks = (idToEdit) => {
-  //   setTasks();
-  // };
+  // ! --- Lógica de Filtragem ---
+  const depuratedTasks = tasks.filter((task) => {
+    if (!task.text) {
+      return false;
+    }
+    return task.text.toLowerCase().includes(searchInputText.toLowerCase());
+  });
+
   return (
     <div className="app">
       <Header />
       <main className="app__main">
         {/*
-            # Agora vamos passar a função "handleAddTasks" para o componente TodoForm, e como vamos fazer isso?
-              * Podemos passar por PROPS, e essa prop podemos nomear do jeito que quisermos, logo nomeamos como "onAddTask".
-          */}
-        <TodoForm onAddTask={handleAddTasks} />
-        {/*
-         * O "Gerente" agora entrega DUAS funções (props) para o TodoList: uma para ler e outra para excluir.
+         * Podemos passar por PROPS, e essa prop podemos nomear do jeito que quisermos, logo nomeamos como "onAddTask".
          */}
+        <TodoToolbar
+          searchInputText={searchInputText}
+          setSearchInputText={setSearchInputText}
+          onOpenModal={() => setIsModalOpen(true)}
+        />
         <TodoList
-          tasks={tasks}
+          tasks={depuratedTasks}
           onExcluirTasks={handleDeleteTasks}
           onCheckComplete={handleCompleteTasks}
         />
+        {isModalOpen && (
+          <TodoForm
+            onAddTask={handleAddTasks}
+            onCloseModal={() => setIsModalOpen(false)}
+          />
+        )}
       </main>
     </div>
   );

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.scss";
+import { FaTimes } from "react-icons/fa";
 
-export const TodoForm = ({ onAddTask }) => {
+export const TodoForm = ({ onAddTask, onCloseModal }) => {
   /*
     ! -- DIDÁTICA: O que é 'useState'? --
       * 1- É o "gancho" (Hook) do React para dar "memória" a um componente.
@@ -24,6 +25,12 @@ export const TodoForm = ({ onAddTask }) => {
     setTextInput(newText);
   };
 
+  // ! Foca no input assim que o modal abre (UX).
+  useEffect(() => {
+    const input = document.querySelector(".todo-modal-content__input");
+    if (input) input.focus();
+  });
+
   // ! Criando a função que dispara quando o formulário é enviado (clique no botão ou enter).
   const handleSubmit = (event) => {
     // * Impede o HTML de recarregar a página (comportamento padrão).
@@ -41,21 +48,49 @@ export const TodoForm = ({ onAddTask }) => {
 
     // * Depois que o formulário é enviado limpamos o campo de texto.
     setTextInput("");
+
+    // * Fechar o modal após a criação da tarefa.
+    onCloseModal();
+  };
+
+  // * Fechar se clicar no fundo escuro (Overlay).
+  const handleOverlayClick = (event) => {
+    if (event.target.className === "todo-modal-overlay") {
+      onCloseModal();
+    }
   };
 
   return (
-    // Formulário com os campos.
-    <form className="todo-form" onSubmit={handleSubmit}>
-      <input
-        className="todo-form__input"
-        type="text"
-        placeholder="Name your task..."
-        value={textInput} // * Esse valor é controlado pelo "estado".
-        onChange={handleInputChange} // ! Toda vez que o usuário mudar qualquer caractere essa função é disparada. (apagar ou escrever algo novo)
-      />
-      <button className="todo-form__button" type="submit">
-        Add
-      </button>
-    </form>
+    <div className="todo-modal-overlay" onClick={handleOverlayClick}>
+      <div className="todo-modal-content">
+        <div className="todo-modal-content__header">
+          <h2>Create new task</h2>
+          <button className="close-button" onClick={onCloseModal}>
+            <FaTimes />
+          </button>
+        </div>
+        {/* Formulário com os campos */}
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Name your task..."
+            className="todo-modal-content__input"
+            value={textInput} // * Esse valor é controlado pelo "estado".
+            /*
+              ! Toda vez que o usuário mudar qualquer caractere essa função é disparada. (apagar ou escrever algo novo)
+            */
+            onChange={(textInput) => handleInputChange(textInput)}
+          />
+          <div className="todo-modal-content__footer">
+            <button type="button" className="btn-cancel" onClick={onCloseModal}>
+              Cancel
+            </button>
+            <button className="btn-confirm" type="submit">
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
