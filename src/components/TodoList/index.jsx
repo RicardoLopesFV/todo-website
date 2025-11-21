@@ -3,7 +3,12 @@ import "./index.scss";
 /*
   ! Aqui vamos passar a função que o gerente "App.jsx" passou para o componente "TodoList", aqui usaremos desestruturação para pegar a prop. Então ao invés de escrevermos assim => "tasks" que é a "variável" da prop, nós escrevemos o que está dentro que é o "{tasks}".
 */
-export const TodoList = ({ tasks, onExcluirTasks, onCheckComplete }) => {
+export const TodoList = ({
+  tasks,
+  onDeleteTasks,
+  onEditTasks,
+  onToggleComplete,
+}) => {
   let listContent; // ? Definindo aqui para que possamos passar no return.
 
   /*
@@ -28,9 +33,10 @@ export const TodoList = ({ tasks, onExcluirTasks, onCheckComplete }) => {
           // * Agora cada item da lista terá esse formato na tela
           <TodoItem
             key={task.id}
+            onToggleComplete={onToggleComplete}
             task={task}
-            onExcluir={onExcluirTasks}
-            onCheckComplete={onCheckComplete}
+            onEditTasks={onEditTasks}
+            onDeleteTasks={onDeleteTasks}
           />
         ))}
       </ul>

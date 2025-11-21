@@ -1,18 +1,23 @@
-@use "../../styles/variables" as variables;
+@use "../../styles/variables" as v;
 
 .todo-item {
   width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: variables.$color-white;
-  border: 1px solid variables.$color-grey-light;
+  background-color: v.$color-white;
+  border: 1px solid v.$color-grey-light;
   border-radius: 8px;
   margin: 0 auto;
   padding: 1.2rem 1.6rem;
 
+  &--editing {
+    border-color: v.$color-signal-info;
+    box-shadow: 0 0 0 3px hsla(205, 85%, 45%, 0.1);
+  }
+
   &--complete {
-    background-color: variables.$color-grey-lightest;
+    background-color: v.$color-grey-lightest;
     border-color: transparent;
   }
 
@@ -25,37 +30,52 @@
 
     &__text {
       font-size: 1.6rem;
-      color: variables.$color-grey-dark;
+      color: v.$color-grey-dark;
       line-height: 1.4;
+      word-break: break-word;
 
       &--complete {
-        color: variables.$color-grey-medium;
+        color: v.$color-grey-medium;
         // * Deixa com um traço no texto quando a tarefa é concluída.
         text-decoration: line-through;
       }
     }
 
-    &__check-button {
-      background-color: transparent;
-      border: 1px solid variables.$color-grey-medium;
-      cursor: pointer;
+    &__edit-input {
+      flex: 1;
+      font-size: 1.6rem;
+      padding: 0.5rem;
+      border: none;
+      border-bottom: 2px solid v.$color-signal-info;
+      background: transparent;
+      outline: none;
+      color: v.$color-grey-dark;
+    }
 
-      font-size: 1.4rem;
-      // color: variables.$color-grey-medium;
-      color: transparent;
-      padding: 0.1rem;
-      border-radius: 6px;
+    &__check-button {
+      min-width: 1.8rem; // ? Tamanho fixo para não amassar.
+      height: 1.8rem;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
+      background-color: transparent;
+      border: 1px solid v.$color-grey-medium;
+      cursor: pointer;
+
+      font-size: 1.4rem;
+      // color: v.$color-grey-medium;
+      color: transparent;
+      padding: 0.1rem;
+      border-radius: 6px;
+
       transition: all 0.2s ease;
 
       &--complete {
-        color: variables.$color-white;
-        background-color: variables.$color-signal-success;
-        border-color: variables.$color-signal-success;
+        color: v.$color-white;
+        background-color: v.$color-signal-success;
+        border-color: v.$color-signal-success;
 
         &:hover {
           // ! Hover pra quando ja está marcado.
@@ -78,14 +98,14 @@
     justify-content: space-between;
     gap: 1.6rem;
 
-    &__delete-button {
+    &__action-btn {
       // ! Resetando a aparência do botão.
       background-color: transparent;
       border: none;
       cursor: pointer;
       // * Estilizando o ícone (ícones do react-icons são como texto).
       font-size: 1.6rem;
-      color: variables.$color-grey-medium;
+      color: v.$color-grey-medium;
       padding: 0.5rem;
       border-radius: 6px;
       // * Centralizando.
@@ -95,14 +115,34 @@
 
       transition: all 0.2s ease;
 
-      &:hover {
-        color: variables.$color-signal-danger;
-        background-color: variables.$color-grey-lightest;
+      &--delete-btn {
+        color: v.$color-grey-medium;
+        &:hover {
+          color: v.$color-signal-danger;
+          background-color: v.$color-grey-lightest;
+        }
       }
 
-      &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px hsla(0, 70%, 50%, 0.2);
+      &--edit-btn {
+        color: v.$color-grey-medium;
+        &:hover {
+          color: v.$color-signal-info;
+          background-color: v.$color-grey-lightest;
+        }
+      }
+
+      &--save-btn {
+        color: v.$color-signal-success;
+        &:hover {
+          background-color: hsla(145, 63%, 42%, 0.1);
+        }
+      }
+
+      &--cancel-btn {
+        color: v.$color-signal-danger;
+        &:hover {
+          background-color: hsla(0, 79%, 63%, 0.1);
+        }
       }
     }
   }

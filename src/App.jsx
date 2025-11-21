@@ -86,6 +86,16 @@ export const App = () => {
     });
   };
 
+  const handleEditTasks = (idToEdit, newText) => {
+    setTasks((prevTasks) =>
+      // * Mapeando o estado anterior das listas e escaneando cada tarefa.
+      prevTasks.map((task) =>
+        // * se achar o "id" correspondente podemos mudar o texto.
+        task.id === idToEdit ? { ...task, text: newText } : task
+      )
+    );
+  };
+
   // ! --- Lógica de Filtragem ---
   const depuratedTasks = tasks.filter((task) => {
     if (!task.text) {
@@ -104,9 +114,11 @@ export const App = () => {
           onOpenModal={() => setIsModalOpen(true)}
         />
         <TodoList
+          onToggleComplete={handleCompleteTasks}
           tasks={depuratedTasks}
-          onExcluirTasks={handleDeleteTasks}
-          onCheckComplete={handleCompleteTasks}
+          // ? Nomeando como "onEditTask" e passando a função como Prop.
+          onEditTasks={handleEditTasks}
+          onDeleteTasks={handleDeleteTasks}
         />
         {isModalOpen && (
           <TodoForm
