@@ -1,3 +1,6 @@
+/*
+  ! Primeiro projeto React que estou fazendo para aprender e documentar tudo que eu achar necessário pra mim aprender de uma vez por TODAS!!!
+*/
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 /*

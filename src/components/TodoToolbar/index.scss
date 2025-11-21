@@ -47,27 +47,32 @@
   }
 
   &__add-button {
+    height: 5rem;
     max-width: max-content;
     display: flex;
     align-items: center;
+
     background-color: v.$color-signal-info;
     color: v.$color-white;
-    border: none;
+
     padding: 0 2.5rem;
+    border: none;
     border-radius: 8px;
     font-size: 1.6rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
 
-    height: 5rem;
-
     &:hover {
       background-color: v.$color-signal-info-dark;
-      transform: translateY(-2px);
+      transform: translateY(-2px); // ? Sobe suavemente o botão.
     }
 
+    /*
+      ! Adaptando botão "+" para mobile, deixando mais intuitivo e bonito.
+    */
     @media (max-width: v.$bp-sm) {
+      // ! Deixando o botão fixado no canto inferior direito da tela.
       position: fixed;
       bottom: 1.6rem;
       right: 1.6rem;

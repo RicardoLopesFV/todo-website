@@ -4,6 +4,7 @@
   width: 100%;
 
   &__empty-message {
+    // ! Msg quando não tiver nenhuma task renderizada.
     text-align: center;
     font-size: 1.6rem;
     color: variables.$color-grey-medium;

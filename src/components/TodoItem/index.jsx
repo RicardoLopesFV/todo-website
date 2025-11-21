@@ -37,9 +37,6 @@ export const TodoItem = ({ task, onExcluir, onCheckComplete }) => {
         <span className={spanClassName.trim()}>{task.text}</span>
       </div>
       <div className="todo-item__right-side">
-        {/* <button className="todo-item__right-side__delete-button">
-          <FaPen />
-        </button> */}
         <button
           className="todo-item__right-side__delete-button"
           onClick={() => onExcluir(task.id)}

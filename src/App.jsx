@@ -5,10 +5,6 @@ import { TodoList } from "./components/TodoList";
 import { TodoToolbar } from "./components/TodoToolbar";
 import "./App.scss";
 /*
-  ! Primeiro projeto React que estou fazendo para aprender e documentar tudo que eu achar necessário pra mim aprender de uma vez por TODAS!!!
-*/
-
-/*
  * Este é o componente principal onde todos os outros componentes menores se montam dentro do "App".
  */
 export const App = () => {
@@ -102,9 +98,6 @@ export const App = () => {
     <div className="app">
       <Header />
       <main className="app__main">
-        {/*
-         * Podemos passar por PROPS, e essa prop podemos nomear do jeito que quisermos, logo nomeamos como "onAddTask".
-         */}
         <TodoToolbar
           searchInputText={searchInputText}
           setSearchInputText={setSearchInputText}
