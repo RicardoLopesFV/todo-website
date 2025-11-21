@@ -42,8 +42,15 @@ export const TodoItem = ({
 
   // ! Função para salvar ao apertar Enter.
   const handleKeyDown = (event) => {
-    if (event === "Enter") handleSave();
-    if (event === "Escape") handleCancel();
+    // ! Usamos "event.key" para ser mais preciso sobre qual evento estamos falando.
+    if (event.key === "Enter") {
+      event.preventDefault(); // ? Para previnir reload da página.
+      handleSave();
+    }
+    if (event.key === "Escape") {
+      event.preventDefault();
+      handleCancel();
+    }
   };
 
   // ! Classes dinâmicas.

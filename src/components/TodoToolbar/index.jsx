@@ -30,6 +30,7 @@ export const TodoToolbar = ({
         onClick={onOpenModal}
       >
         <FaPlus />
+        <span className="todo-toolbar__add-button__text">Task</span>
       </button>
     </div>
   );

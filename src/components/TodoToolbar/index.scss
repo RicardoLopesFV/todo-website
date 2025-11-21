@@ -96,5 +96,11 @@
       border-radius: 50%;
       scale: 1.2;
     }
+
+    &__text {
+      @media (max-width: v.$bp-sm) {
+        display: none;
+      }
+    }
   }
 }
