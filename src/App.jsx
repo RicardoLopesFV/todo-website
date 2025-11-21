@@ -4,6 +4,7 @@ import { TodoForm } from "./components/TodoForm";
 import { TodoList } from "./components/TodoList";
 import { TodoToolbar } from "./components/TodoToolbar";
 import "./App.scss";
+import { Footer } from "./components/Footer";
 /*
  * Este é o componente principal onde todos os outros componentes menores se montam dentro do "App".
  */
@@ -127,6 +128,7 @@ export const App = () => {
           />
         )}
       </main>
+      <Footer />
     </div>
   );
 };

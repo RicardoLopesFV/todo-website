@@ -1,7 +1,6 @@
 @use "../../styles/variables" as v;
 
 .todo-toolbar {
-  position: relative;
   width: 80%;
   display: flex;
   gap: 1.5rem;
@@ -86,7 +85,7 @@
     */
     @media (max-width: v.$bp-sm) {
       // ! Deixando o botão fixado no canto inferior direito da tela.
-      position: fixed;
+      position: absolute;
       bottom: 3rem;
       right: 3rem;
 

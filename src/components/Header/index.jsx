@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import "./index.scss";
 
 export const Header = () => {
@@ -23,66 +22,36 @@ export const Header = () => {
         <h1 className="header__title">Todo App</h1>
         <nav className="header__nav">
           <ul className="header__nav-list">
-            <div className="header__left-side">
-              <li className="header__left-side__nav-item">
-                <a
-                  className={`header__left-side__nav-link ${
-                    /*
+            <li className="header__nav-item">
+              <a
+                className={`header__nav-link ${
+                  /*
                       # Aqui está dizendo:
                         * Se o link ativo for o "About", então ele aplica o modificador "header__nav-link--active".
                     */
-                    activeLink === "Home" &&
-                    "header__left-side__nav-link--active"
-                  }`}
-                  href="#"
-                  onClick={() => setActiveLink("Home")}
-                >
-                  Home
-                </a>
-              </li>
-              <li className="header__left-side__nav-item">
-                <a
-                  className={`header__left-side__nav-link ${
-                    /*
+                  activeLink === "Home" && "header__nav-link--active"
+                }`}
+                href="#"
+                onClick={() => setActiveLink("Home")}
+              >
+                Home
+              </a>
+            </li>
+            <li className="header__nav-item">
+              <a
+                className={`header__nav-link ${
+                  /*
                       # Aqui está dizendo:
                         * Se o link ativo for o "About", então ele aplica o modificador "header__nav-link--active".
                     */
-                    activeLink === "About" &&
-                    "header__left-side__nav-link--active"
-                  }`}
-                  href="#"
-                  onClick={() => setActiveLink("About")}
-                >
-                  About
-                </a>
-              </li>
-            </div>
-            <div className="header__right-side">
-              <li className="header__right-side__socials">
-                <a
-                  className="header__right-side__socials-link"
-                  href="https://github.com/RicardoLopesFV"
-                  target="blank" // ? Abre uma nova aba
-                  rel="noopener noreferrer" // ? Segurança
-                  aria-label="Link para o Github"
-                  onClick={() => setActiveLink("Github")}
-                >
-                  <FaGithub />
-                </a>
-              </li>
-              <li className="header__right-side__socials">
-                <a
-                  className="header__right-side__socials-link header__right-side__socials-link--linkedin"
-                  href="https://www.linkedin.com/in/ricardolopesfv/"
-                  target="blank"
-                  rel="noopener noreferrer"
-                  aria-label="Link para o Linkedin"
-                  onClick={() => setActiveLink("Linkedin")}
-                >
-                  <FaLinkedin />
-                </a>
-              </li>
-            </div>
+                  activeLink === "About" && "header__nav-link--active"
+                }`}
+                href="#"
+                onClick={() => setActiveLink("About")}
+              >
+                About
+              </a>
+            </li>
           </ul>
         </nav>
       </div>

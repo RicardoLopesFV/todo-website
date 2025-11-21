@@ -45,49 +45,24 @@
     gap: 1rem;
   }
 
-  &__left-side {
-    // ! Estilizando cada link.
-    &__nav-link {
-      font-size: 1.6rem; // ? 16px.
-      font-weight: 500;
-      color: variables.$color-grey-medium;
-      padding: 0.8rem 1.2rem;
-      border-radius: 6px;
-      transition: all 0.2s ease; // ? Efeito suave.
+  // ! Estilizando cada link.
+  &__nav-link {
+    font-size: 1.6rem; // ? 16px.
+    font-weight: 500;
+    color: variables.$color-grey-medium;
+    padding: 0.8rem 1.2rem;
+    border-radius: 6px;
+    transition: all 0.2s ease; // ? Efeito suave.
 
-      &--active {
-        color: variables.$color-signal-info; // Usando a nova cor
-        font-weight: 700;
-        background-color: hsla(205, 85%, 45%, 0.1); // Fundo da nova cor
-      }
-
-      &:hover {
-        background-color: variables.$color-grey-lightest;
-        color: variables.$color-grey-dark;
-      }
+    &--active {
+      color: variables.$color-signal-info; // Usando a nova cor
+      font-weight: 700;
+      background-color: hsla(205, 85%, 45%, 0.1); // Fundo da nova cor
     }
-  }
 
-  &__right-side {
-    &__socials-link {
-      display: flex;
-      align-items: center;
-      font-size: 2.2rem; // Tamanho do ícone
-      color: variables.$color-grey-medium; // Cor padrão (cinza)
-      padding: 0.8rem 1rem;
-      transition: color 0.2s ease;
-
-      &:hover {
-        color: variables.$color-grey-dark; // GitHub fica escuro no hover
-      }
-
-      // Modificador BEM exclusivo para o LinkedIn
-      &--linkedin {
-        &:hover {
-          // Apenas este ícone usa a cor da marca
-          color: variables.$color-brand-linkedin;
-        }
-      }
+    &:hover {
+      background-color: variables.$color-grey-lightest;
+      color: variables.$color-grey-dark;
     }
   }
 }
