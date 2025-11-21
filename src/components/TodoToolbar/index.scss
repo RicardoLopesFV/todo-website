@@ -74,14 +74,14 @@
     @media (max-width: v.$bp-sm) {
       // ! Deixando o botão fixado no canto inferior direito da tela.
       position: fixed;
-      bottom: 1.6rem;
-      right: 1.6rem;
-      height: 50px;
-      width: 50px;
+      bottom: 3rem;
+      right: 3rem;
 
       // ! Para deixar o botão redondo.
-      padding: 1.6rem;
+      width: 5rem;
+      padding: 1.8rem;
       border-radius: 50%;
+      scale: 1.2;
     }
   }
 }
