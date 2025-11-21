@@ -42,7 +42,8 @@
     }
 
     &__edit-input {
-      flex: 1;
+      // flex: 1;
+      width: 100%;
       font-size: 1.6rem;
       padding: 0.5rem;
       border: none;
@@ -50,6 +51,10 @@
       background: transparent;
       outline: none;
       color: v.$color-grey-dark;
+
+      @media (max-width: v.$bp-sm) {
+        max-width: 90%;
+      }
     }
 
     &__check-button {
@@ -97,6 +102,10 @@
     align-items: center;
     justify-content: space-between;
     gap: 1.6rem;
+
+    @media (max-width: v.$bp-sm) {
+      gap: 1rem;
+    }
 
     &__action-btn {
       // ! Resetando a aparência do botão.
