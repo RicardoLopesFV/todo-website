@@ -9,8 +9,8 @@
   height: 100%;
 
   // O efeito de "desligar a luz"
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px); // O desfoque (Blur)
+  background-color: rgba(20, 20, 30, 0.4); // Um pouco mais azulado/escuro
+  backdrop-filter: blur(8px); // Mais blur para focar mais
 
   z-index: 1000; // Garante que fique no topo
   display: flex;
@@ -19,7 +19,7 @@
   padding: 1.5rem;
 
   // Animação suave
-  animation: fadeIn 0.2s ease-out;
+  animation: fadeIn 0.25s ease-out;
 }
 
 // 2. A Janela (Modal)
@@ -27,10 +27,12 @@
   background-color: v.$color-white;
   width: 100%;
   max-width: 500px;
-  border-radius: 12px;
-  padding: 2.5rem;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 16px;
+  padding: 3rem;
+
+  // Borda sutil
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.02);
+  animation: slideUp 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 
   &__header {
     display: flex;
@@ -47,27 +49,43 @@
       background: none;
       border: none;
       color: v.$color-grey-medium;
-      font-size: 2rem;
-      cursor: pointer;
+      font-size: 1.6rem;
+
+      width: 3.6rem;
+      height: 3.6rem;
+      border-radius: 50%;
       display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+      transition: all 0.2s;
+
       &:hover {
+        background-color: rgba(v.$color-signal-danger, 0.1);
         color: v.$color-signal-danger;
+        transform: rotate(90deg); // Efeito legal de girar
       }
     }
   }
 
   &__input {
     width: 100%;
-    padding: 1.5rem;
+    padding: 1.6rem;
     font-size: 1.6rem;
-    border: 1px solid v.$color-grey-light;
-    border-radius: 8px;
-    margin-bottom: 2.5rem;
+    border: 2px solid transparent; // Prepara para a borda
+    background-color: v.$color-grey-lightest; // Fundo cinza claro
+    border-radius: 10px;
+    margin-bottom: 3rem;
     color: v.$color-grey-dark;
+    transition: all 0.2s;
 
     &:focus {
       outline: none;
+      background-color: v.$color-white;
       border-color: v.$color-signal-info;
+      box-shadow: 0 4px 12px rgba(33, 150, 243, 0.1);
+      transform: translateY(-1px);
     }
   }
 
@@ -83,21 +101,31 @@
       font-weight: 600;
       cursor: pointer;
       border: none;
+      transition: all 0.2s;
     }
 
     .btn-cancel {
       background-color: transparent;
       color: v.$color-grey-medium;
+      transition: all 0.2s;
+
       &:hover {
         background-color: v.$color-grey-lightest;
+        color: v.$color-grey-dark;
+        transform: translateY(-2px);
       }
     }
 
     .btn-confirm {
       background-color: v.$color-signal-info;
       color: v.$color-white;
+      box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+      transition: all 0.2s;
+
       &:hover {
         background-color: v.$color-signal-info-dark;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(33, 150, 243, 0.4);
       }
     }
   }
@@ -114,7 +142,7 @@
 
 @keyframes slideUp {
   from {
-    transform: translateY(20px);
+    transform: translateY(30px);
     opacity: 0;
   }
   to {

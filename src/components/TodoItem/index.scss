@@ -11,14 +11,38 @@
   margin: 0 auto;
   padding: 1.2rem 1.6rem;
 
+  // # SOMBRA SUAVE NO CARD.
+  // * Uma sombra difusa e levemente colorida para dar profundidade.
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+
+  // * Efeito de "levantar" ao passar o mouse.
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
+  }
+
   &--editing {
     border-color: v.$color-signal-info;
-    box-shadow: 0 0 0 3px hsla(205, 85%, 45%, 0.1);
+    box-shadow: 0 0 4px 4px rgba(33, 150, 243, 0.15);
+    transform: none; // ? Remove o efeito de levantar.
+
+    &:hover {
+      box-shadow: none;
+      box-shadow: 0 0 4px 4px rgba(33, 150, 243, 0.15);
+    }
   }
 
   &--complete {
     background-color: v.$color-grey-lightest;
     border-color: transparent;
+    box-shadow: none;
+    opacity: 0.8;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
   }
 
   &__left-side {
@@ -75,12 +99,13 @@
       padding: 0.1rem;
       border-radius: 6px;
 
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
       &--complete {
         color: v.$color-white;
         background-color: v.$color-signal-success;
         border-color: v.$color-signal-success;
+        box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
 
         &:hover {
           // ! Hover pra quando ja está marcado.
@@ -123,6 +148,10 @@
       align-items: center;
 
       transition: all 0.2s ease;
+
+      &:hover {
+        transform: translateY(-1px);
+      }
 
       &--delete-btn {
         color: v.$color-grey-medium;

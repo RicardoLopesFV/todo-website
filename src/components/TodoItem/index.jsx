@@ -47,7 +47,7 @@ export const TodoItem = ({
   };
 
   // ! Classes dinâmicas.
-  const itemClassName = `todo-item ${isComplete ? "todo-item--completa" : ""} ${
+  const itemClassName = `todo-item ${isComplete ? "todo-item--complete" : ""} ${
     isEditing ? "todo-item--editing" : ""
   }`;
 
