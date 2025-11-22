@@ -40,10 +40,6 @@ export const Header = () => {
             <li className="header__nav-item">
               <a
                 className={`header__nav-link ${
-                  /*
-                      # Aqui está dizendo:
-                        * Se o link ativo for o "About", então ele aplica o modificador "header__nav-link--active".
-                    */
                   activeLink === "About" && "header__nav-link--active"
                 }`}
                 href="#"
