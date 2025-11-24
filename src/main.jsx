@@ -3,20 +3,24 @@
 */
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 /*
-  Aqui eu importo o App usando "{}" pq estou escrevendo o componente desta forma:
-  "export const App = () => { ...".
+  # Aqui eu importo o App usando "{}" pq estou escrevendo o componente desta forma:"export const App = () => { ...".
 
 */
 import { App } from "./App.jsx";
 /*
-  Se por um acaso fosse uma função normal com "export default" no final, ficaria assim:
-  "import App from "./App.jsx"".
+  # Se por um acaso fosse uma função normal com "export default" no final, ficaria assim: "import App from "./App.jsx"".
 */
 import "./styles/main.scss";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    {/*
+     * Envolvendo o <App /> com BrowserRouter para que possamos utilizar as rotas
+     */}
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>
 );
