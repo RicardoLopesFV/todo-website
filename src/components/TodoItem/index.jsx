@@ -1,8 +1,8 @@
 import { FaCheck, FaPen } from "react-icons/fa6";
 import { FaTrash } from "react-icons/fa6";
-import "./index.scss";
 import { useEffect, useRef, useState } from "react";
 import { FaSave, FaTimes } from "react-icons/fa";
+import "./index.scss";
 
 export const TodoItem = ({
   task,

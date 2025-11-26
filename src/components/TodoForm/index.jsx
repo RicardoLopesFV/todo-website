@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./index.scss";
 import { FaTimes } from "react-icons/fa";
+import "./index.scss";
 
 export const TodoForm = ({ onAddTask, onCloseModal }) => {
   /*
