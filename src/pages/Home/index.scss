@@ -1,0 +1,215 @@
+@use "../../styles/variables" as *;
+
+// # Animação suave de entrada.
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home {
+  &__content {
+    min-height: 100vh;
+    background-color: $color-grey-lightest;
+    color: $color-grey-dark;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      color: $color-black;
+
+      .dot {
+        color: $color-signal-info;
+      }
+    }
+
+    nav {
+      font-size: 1.4rem;
+
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        .nav-item {
+          list-style: none;
+
+          a {
+            text-decoration: none;
+            color: $color-grey-medium;
+            font-weight: 500;
+            transition: color 0.2s;
+
+            &:hover {
+              color: $color-black;
+            }
+          }
+
+          .nav-btn {
+            text-decoration: none;
+            color: $color-signal-info;
+            font-weight: 700;
+            border: 2px solid $color-signal-info;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+
+            &:hover {
+              background-color: $color-signal-info;
+              color: $color-white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    width: 100%;
+    animation: fadeIn 0.8s ease-out;
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 5rem;
+
+      h1 {
+        font-size: 3.5rem;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        color: $color-black;
+        letter-spacing: -1px;
+
+        @media (max-width: $bp-sm) {
+          font-size: 2.5rem;
+        }
+
+        .highlight {
+          color: $color-signal-info;
+        }
+      }
+
+      .hero-text {
+        font-size: 1.4rem;
+        color: $color-grey-medium;
+        max-width: 600px;
+        margin: 0 auto 2.5rem auto;
+        line-height: 1.6;
+      }
+
+      .cta-group {
+        font-size: 1.2rem;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+
+        a {
+          text-decoration: none;
+          padding: 1rem 2rem;
+          border-radius: 8px;
+          font-weight: 600;
+          transition: transform 0.2s;
+
+          &:hover {
+            transform: translateY(-2px);
+          }
+        }
+
+        .btn-primary {
+          background-color: $color-signal-info;
+          color: $color-white;
+          box-shadow: 0 10px 20px rgba($color-signal-info, 0.2);
+
+          &:hover {
+            background-color: $color-signal-info-dark;
+          }
+        }
+
+        .btn-secondary {
+          background-color: white;
+          color: $color-grey-dark;
+          border: 1px solid $color-grey-light;
+
+          &:hover {
+            border-color: $color-grey-medium;
+          }
+        }
+      }
+    }
+
+    .features-section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      width: 100%;
+
+      @media (max-width: $bp-md) {
+        grid-template-columns: 1fr; // Vira uma coluna no celular
+      }
+
+      .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid $color-grey-light;
+        text-align: left;
+        transition: border-color 0.3s, transform 0.3s;
+
+        &:hover {
+          border-color: $color-signal-info;
+          transform: translateY(-5px);
+        }
+
+        .icon {
+          font-size: 2rem;
+          color: $color-signal-info;
+          margin-bottom: 1rem;
+        }
+
+        h3 {
+          font-size: 1.6rem;
+          margin-bottom: 0.5rem;
+          color: $color-black;
+        }
+
+        p {
+          color: $color-grey-medium;
+          font-size: 1.2rem;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid $color-grey-light;
+    color: $color-grey-medium;
+    font-size: 1.4rem;
+    margin-top: auto;
+  }
+}
