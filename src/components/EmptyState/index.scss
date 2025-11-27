@@ -1,0 +1,47 @@
+@use "../../styles/variables" as *;
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 6rem 2rem;
+
+  animation: fadeIn 0.5s ease-out;
+
+  &__icon {
+    color: $color-grey-medium;
+    margin-bottom: 2rem;
+    opacity: 0.5;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: $color-grey-dark;
+    margin-bottom: 1rem;
+  }
+
+  &__description {
+    font-size: 1.4rem;
+    color: $color-grey-medium;
+    line-height: 1.5;
+
+    strong {
+      color: $color-signal-info;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

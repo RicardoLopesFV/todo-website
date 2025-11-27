@@ -1,3 +1,4 @@
+import { EmptyState } from "../EmptyState";
 import { TodoItem } from "../TodoItem";
 import "./index.scss";
 /*
@@ -15,11 +16,7 @@ export const TodoList = ({
    * Apenas usando condicional para caso não tenha nenhuma tarefa para renderizar.
    */
   if (!tasks || tasks.length === 0) {
-    return (
-      <p className="todo-list__empty-message">
-        No tasks were found. Try to add one!
-      </p>
-    );
+    return <EmptyState />;
   } else {
     // * Aqui nós inserimos o conteúdo da "listContent" para ser renderizado.
     listContent = (
