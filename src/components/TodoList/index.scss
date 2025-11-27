@@ -2,6 +2,7 @@
 
 .todo-list {
   width: 100%;
+  margin: 0 auto;
 
   &__empty-message {
     // ! Msg quando não tiver nenhuma task renderizada.

@@ -1,198 +1,181 @@
 @use "../../styles/variables" as v;
 
 .todo-item {
-  width: 80%;
+  // ! 1. AJUSTE DE LARGURA: Removemos o width: 80% fixo.
+  // Agora ele ocupa 100% do espaço que o pai (TodoList) der pra ele.
+  width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   background-color: v.$color-white;
-  border: 1px solid v.$color-grey-light;
-  border-radius: 8px;
-  margin: 0 auto;
-  padding: 1.2rem 1.6rem;
 
-  // # SOMBRA SUAVE NO CARD.
-  // * Uma sombra difusa e levemente colorida para dar profundidade.
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.08);
-  transition: all 0.2s ease;
+  // ! 2. BORDAS MAIS SUAVES: Removemos a borda cinza dura e deixamos a sombra fazer o trabalho.
+  border: 1px solid transparent;
+  border-radius: 12px; // Arredondamento maior (mais moderno)
 
-  // * Efeito de "levantar" ao passar o mouse.
+  // margin: 0 auto; -> Não precisamos mais centralizar o item individualmente
+  padding: 1.5rem; // Mais respiro interno
+
+  // Sombra consistente com a Home
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+      0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    // Borda sutil no hover para destaque
+    border-color: v.$color-grey-light;
   }
 
   &--editing {
     border-color: v.$color-signal-info;
-    box-shadow: 0 0 4px 4px rgba(33, 150, 243, 0.15);
-    transform: none; // ? Remove o efeito de levantar.
+    // Glow azul ao editar
+    box-shadow: 0 0 0 3px rgba(v.$color-signal-info, 0.15);
+    transform: none;
 
     &:hover {
-      box-shadow: none;
-      box-shadow: 0 0 4px 4px rgba(33, 150, 243, 0.15);
+      box-shadow: 0 0 0 3px rgba(v.$color-signal-info, 0.15);
     }
   }
 
   &--complete {
-    background-color: v.$color-grey-lightest;
-    border-color: transparent;
+    background-color: #fafafa; // Um cinza super leve, quase branco
     box-shadow: none;
-    opacity: 0.8;
+    border: 1px solid v.$color-grey-lightest;
+
+    // ! Efeito visual: Tarefa completa "afunda" na tela
+    opacity: 0.7;
 
     &:hover {
       transform: none;
       box-shadow: none;
+      opacity: 1; // Volta a ficar visível se passar o mouse
     }
   }
 
   &__left-side {
-    width: max-content; // ? Achei muito melhor usar "max-content" nesse caso.
-    // width: clamp(8rem, 10rem + 1vw, 12rem);
+    // ! 3. FLEXIBILIDADE: O lado esquerdo deve crescer para empurrar os botões
+    flex: 1;
     display: flex;
     align-items: center;
-    gap: 1.6rem;
+    gap: 1.2rem;
+    min-width: 0; // Truque para o text-overflow funcionar em Flexbox
 
     &__text {
-      font-size: 1.6rem;
+      font-size: 1.3rem; // Ajuste para REM padrão (geralmente 16px base)
+      font-weight: 500; // Um pouco mais de peso
       color: v.$color-grey-dark;
-      line-height: 1.4;
+      line-height: 1.5;
+
+      // Quebra de linha inteligente
       word-break: break-word;
 
       &--complete {
         color: v.$color-grey-medium;
-        // * Deixa com um traço no texto quando a tarefa é concluída.
         text-decoration: line-through;
+        font-weight: 400;
       }
     }
 
     &__edit-input {
-      // flex: 1;
       width: 100%;
-      font-size: 1.6rem;
-      padding: 0.5rem;
+      font-size: 1.3rem;
+      padding: 0.25rem 0;
       border: none;
       border-bottom: 2px solid v.$color-signal-info;
       background: transparent;
       outline: none;
       color: v.$color-grey-dark;
-
-      @media (max-width: v.$bp-sm) {
-        max-width: 90%;
-      }
+      font-weight: 500;
     }
 
     &__check-button {
-      min-width: 1.8rem; // ? Tamanho fixo para não amassar.
-      height: 1.8rem;
+      // Checkbox personalizado um pouco maior e mais clicável
+      flex-shrink: 0; // Não deixa o botão amassar se o texto for longo
+      width: 24px;
+      height: 24px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
       background-color: transparent;
-      border: 1px solid v.$color-grey-medium;
+      border: 2px solid v.$color-grey-light; // Borda mais grossa
       cursor: pointer;
 
-      font-size: 1.4rem;
-      // color: v.$color-grey-medium;
+      font-size: 1rem;
       color: transparent;
-      padding: 0.1rem;
-      border-radius: 6px;
+      border-radius: 50%; // ! MUDANÇA: Checkbox Redondo (Circle) é mais moderno que quadrado
 
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.2s ease;
 
       &--complete {
         color: v.$color-white;
         background-color: v.$color-signal-success;
         border-color: v.$color-signal-success;
-        box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
-
-        &:hover {
-          // ! Hover pra quando ja está marcado.
-          background-color: hsla(145, 63%, 42%, 0.1);
-          border-color: transparent;
-        }
       }
 
       &:hover {
-        // ! Hover pra quando está desmarcado.
-        box-shadow: 0 0 2px 1px hsla(0, 0%, 50%, 0.4);
+        border-color: v.$color-signal-success; // Borda verde ao passar o mouse antes de clicar
       }
     }
   }
 
   &__right-side {
-    // * Container dos botões.
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1.6rem;
-
-    @media (max-width: v.$bp-sm) {
-      gap: 1rem;
-    }
+    gap: 0.5rem; // Botoes mais juntos
+    margin-left: 1rem; // Separação do texto
 
     &__action-btn {
-      // ! Resetando a aparência do botão.
       background-color: transparent;
       border: none;
       cursor: pointer;
-      // * Estilizando o ícone (ícones do react-icons são como texto).
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       color: v.$color-grey-medium;
-      padding: 0.5rem;
-      border-radius: 6px;
-      // * Centralizando.
+
+      // Área de clique maior
+      padding: 0.6rem;
+      border-radius: 8px;
+
       display: flex;
       justify-content: center;
       align-items: center;
-
       transition: all 0.2s ease;
 
       &:hover {
-        transform: translateY(-1px);
+        background-color: v.$color-grey-lightest;
+        transform: scale(1.1); // Leve zoom
       }
 
-      &--delete-btn {
-        color: v.$color-grey-medium;
-        &:hover {
-          color: v.$color-signal-danger;
-          background-color: v.$color-grey-lightest;
-        }
+      &--delete-btn:hover {
+        color: v.$color-signal-danger;
+        background-color: rgba(
+          v.$color-signal-danger,
+          0.1
+        ); // Fundo vermelho bem clarinho
       }
 
-      &--edit-btn {
-        color: v.$color-grey-medium;
-        &:hover {
-          color: v.$color-signal-info;
-          background-color: v.$color-grey-lightest;
-        }
+      &--edit-btn:hover {
+        color: v.$color-signal-info;
+        background-color: rgba(v.$color-signal-info, 0.1);
       }
 
+      // Ícones de Salvar/Cancelar mantêm a lógica original
       &--save-btn {
         color: v.$color-signal-success;
-        &:hover {
-          background-color: hsla(145, 63%, 42%, 0.1);
-        }
       }
-
       &--cancel-btn {
         color: v.$color-signal-danger;
-        &:hover {
-          background-color: hsla(0, 79%, 63%, 0.1);
-        }
       }
     }
   }
 
-  /*
-  # Traduzindo esse &:not(las-child):
-    * 1- :last-child (O "Último Filho"): É uma "pseudo-classe" do CSS. Ela seleciona o item que é o último filho de seu container-pai (no caso, o último <li> dentro do <ul>).
-
-    * 2- :not(...) (O "Não"): É outra pseudo-classe. Ela é uma negação, significando "selecione qualquer coisa que NÃO SEJA o que está dentro dos parênteses".
-  */
   &:not(:last-child) {
-    // * Então todos os itens terão as propriedades aqui escritas, menos último item.
     margin-bottom: 1rem;
   }
 }

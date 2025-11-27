@@ -1,7 +1,6 @@
 @use "../../styles/variables" as v;
 
 .footer {
-  background-color: v.$color-white;
   border-top: 1px solid v.$color-grey-light;
   padding: 2rem 0;
   margin-top: auto; // ? Importante para o sticky footer.
@@ -18,12 +17,12 @@
 
     @media (min-width: v.$bp-sm) {
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: center;
     }
   }
 
   &__text {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: v.$color-grey-medium;
     text-align: center;
 
