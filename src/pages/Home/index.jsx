@@ -29,7 +29,7 @@ export const Home = () => {
           <section className="hero-section">
             <h1>
               Organize suas idéias. <br />
-              Realize seus <span className="highlight">objetivos</span>
+              Realize seus <span className="highlight">objetivos.</span>
             </h1>
             <p className="hero-text">
               A simplicidade que você precisa para focar no que realmente
