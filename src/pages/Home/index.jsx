@@ -8,8 +8,10 @@ export const Home = () => {
     <div className="home">
       <div className="home__content">
         <header className="home__header">
-          <div className="logo">TodoApp</div>
-          <span className="dot">.</span>
+          <div className="logo">
+            TodoApp
+            <span className="dot">.</span>
+          </div>
           <nav>
             <ul>
               <li className="nav-item">
