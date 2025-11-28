@@ -11,31 +11,6 @@ export const Footer = () => {
           &copy; {currentYear} Todo App. Developed with ❤️ by{" "}
           <strong>Ricardo</strong>.
         </p>
-        <ul className="footer__socials-list">
-          <li className="footer__socials-item">
-            <a
-              className="footer__socials-link footer__socials-link--linkedin"
-              href="https://www.linkedin.com/in/ricardolopesfv/"
-              target="blank"
-              rel="noopener noreferrer"
-              aria-label="Link para o Linkedin"
-            >
-              <FaLinkedin />
-            </a>
-          </li>
-          <li className="footer__socials-item">
-            <a
-              className="footer__socials-link footer__socials-link--github"
-              href="https://github.com/RicardoLopesFV"
-              target="blank" // ? Abre uma nova aba
-              rel="noopener noreferrer" // ? Segurança
-              aria-label="Link para o Github"
-            >
-              <FaGithub />
-            </a>
-          </li>
-          <li className="footer__socials-item"></li>
-        </ul>
       </div>
     </footer>
   );
