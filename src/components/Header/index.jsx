@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./index.scss";
 
 export const Header = () => {
   // ! Criando estado pra armazenar qual link foi clicado e tem o modificador ativo.
-  const [activeLink, setActiveLink] = useState("Home");
+  const [activeLink, setActiveLink] = useState("");
 
   /*
     # Lá no "className" dos link onde eu coloco a lógica, seria quase a mesma coisa que se eu tivesse escrito assim: (JavaScript Puro)
@@ -25,19 +26,9 @@ export const Header = () => {
         <nav className="header__nav">
           <ul className="header__nav-list">
             <li className="header__nav-item">
-              <a
-                className={`header__nav-link ${
-                  /*
-                      # Aqui está dizendo:
-                        * Se o link ativo for o "About", então ele aplica o modificador "header__nav-link--active".
-                    */
-                  activeLink === "Home" && "header__nav-link--active"
-                }`}
-                href="#"
-                onClick={() => setActiveLink("Home")}
-              >
+              <Link to="/" className="header__nav-link">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="header__nav-item">
               <a
@@ -47,7 +38,7 @@ export const Header = () => {
                 href="#"
                 onClick={() => setActiveLink("About")}
               >
-                About
+                Contact
               </a>
             </li>
           </ul>
