@@ -14,6 +14,7 @@
 
 .home {
   &__content {
+    position: relative;
     min-height: 100vh;
     background-color: $color-grey-lightest;
     color: $color-grey-dark;
@@ -23,6 +24,8 @@
   }
 
   &__header {
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,10 +34,7 @@
     width: 100%;
     margin: 0 auto;
     background-color: $color-white;
-
-    @media (max-width: $bp-sm) {
-      margin-bottom: auto;
-    }
+    box-shadow: 0 5px 10px rgba($color-grey-medium, 0.1);
 
     .logo {
       font-size: 2rem;
