@@ -8,7 +8,7 @@ export const Footer = () => {
     <footer className="footer">
       <div className="footer__container">
         <p className="footer__text">
-          &copy; {currentYear} Todo App. Developed with ❤️ by{" "}
+          &copy; {currentYear} TodoApp. Developed with ❤️ by{" "}
           <strong>Ricardo</strong>.
         </p>
       </div>
