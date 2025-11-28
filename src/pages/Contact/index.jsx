@@ -3,6 +3,7 @@ import {
   FaArrowLeft,
   FaDiscord,
   FaEnvelope,
+  FaGithub,
   FaLinkedin,
   FaWhatsapp,
 } from "react-icons/fa6";
@@ -86,6 +87,22 @@ export const Contact = () => {
             <div className="info">
               <span className="label">Discord</span>
               <span className="value">Add me on discord</span>
+            </div>
+          </a>
+
+          {/* # GITHUB */}
+          <a
+            href="https://github.com/RicardoLopesFV"
+            target="_blank"
+            rel="noreferrer"
+            className="contact-btn github"
+          >
+            <div className="icon-box">
+              <FaGithub />
+            </div>
+            <div className="info">
+              <span className="label">Github</span>
+              <span className="value">My github profile</span>
             </div>
           </a>
         </div>
