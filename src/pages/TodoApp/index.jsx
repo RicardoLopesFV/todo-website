@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { TodoToolbar } from "../../components/TodoToolbar";
@@ -42,11 +43,17 @@ export const TodoApp = () => {
 
     // * prevTasks = lista de tarefas já existente.
     setTasks((prevTasks) => [...prevTasks, newTask]);
+
+    // * Aqui no final implementamos o toast.
+    toast.success("Task created sucessfully!");
   };
+
   // # Deletando tarefas.
   const handleDeleteTasks = (idToDelete) => {
     // * filter retorna a lista já existente com todas as tarefas que tenham o "id" diferente do "idToDelete".
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== idToDelete));
+
+    toast.error("Task deleted!");
   };
 
   // # Completando tarefas.
@@ -54,10 +61,12 @@ export const TodoApp = () => {
     setTasks((prevTasks) => {
       // * Percorrendo a lista até achar o id que queremos.
       return prevTasks.map((task) => {
-        if (task.id !== idToComplete) {
-          return task;
-        }
+        if (task.id !== idToComplete) return task;
 
+        const statusCompleted = !task.isComplete;
+        if (statusCompleted) {
+          toast.success("Good job! task completed!");
+        }
         // * Se achar ele vai inverter o valor booleano de "isComplete".
         return { ...task, isComplete: !task.isComplete };
       });

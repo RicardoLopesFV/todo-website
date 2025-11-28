@@ -6,12 +6,7 @@ export const Header = () => {
   // ! Criando estado pra armazenar qual link foi clicado e tem o modificador ativo.
   const [activeLink, setActiveLink] = useState("");
 
-  /*
-    # Lá no "className" dos link onde eu coloco a lógica, seria quase a mesma coisa que se eu tivesse escrito assim: (JavaScript Puro)
-      * if (activeLink === "About") {
-      *   event.target.style.classList.toggle(header__nav-link--active);
-      * }
-    
+  /*    
     ! O React nos encoraja a pensar de forma declarativa (nós "declaramos" como o link deve ser, com base em um "estado").
 
     ! O JavaScript puro utiliza a forma imperativa(você "manda" o link mudar de cor).
@@ -33,10 +28,10 @@ export const Header = () => {
             <li className="header__nav-item">
               <a
                 className={`header__nav-link ${
-                  activeLink === "About" && "header__nav-link--active"
+                  activeLink === "Contact" && "header__nav-link--active"
                 }`}
                 href="#"
-                onClick={() => setActiveLink("About")}
+                onClick={() => setActiveLink("Contact")}
               >
                 Contact
               </a>

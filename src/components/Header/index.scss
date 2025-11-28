@@ -16,7 +16,6 @@
     // ! Ajuste para telas pequenas.
     @media (max-width: variables.$bp-sm) {
       padding: 2.5rem;
-      flex-direction: column;
       gap: 1.5rem;
     }
   }

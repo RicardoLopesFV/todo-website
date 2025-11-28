@@ -72,7 +72,7 @@
     padding: 0.5rem 2.5rem;
     border: none;
     border-radius: 12px;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -98,12 +98,6 @@
       padding: 1.8rem;
       border-radius: 50%;
       scale: 1.2;
-    }
-
-    &__text {
-      @media (max-width: v.$bp-sm) {
-        display: none;
-      }
     }
   }
 }
