@@ -32,6 +32,10 @@
     margin: 0 auto;
     background-color: $color-white;
 
+    @media (max-width: $bp-sm) {
+      margin-bottom: auto;
+    }
+
     .logo {
       font-size: 2rem;
       font-weight: 800;
