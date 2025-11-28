@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 import { TodoApp } from "./pages/TodoApp";
 import { Home } from "./pages/Home";
+import { Contact } from "./pages/Contact";
 
 export const App = () => {
   return (
@@ -16,6 +17,7 @@ export const App = () => {
          */}
         <Route path="/" element={<Home />} />
         <Route path="/TodoApp" element={<TodoApp />} />
+        <Route path="/Contact" element={<Contact />} />
       </Routes>
     </>
   );

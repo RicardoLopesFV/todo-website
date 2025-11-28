@@ -30,6 +30,7 @@
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+    background-color: $color-white;
 
     .logo {
       font-size: 2rem;
@@ -70,6 +71,7 @@
             padding: 0.5rem 1.2rem;
             border-radius: 6px;
             transition: all 0.2s;
+            box-shadow: 0 10px 20px rgba($color-signal-info, 0.1);
 
             &:hover {
               background-color: $color-signal-info;
