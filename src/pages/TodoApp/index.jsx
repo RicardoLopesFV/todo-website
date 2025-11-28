@@ -58,15 +58,16 @@ export const TodoApp = () => {
 
   // # Completando tarefas.
   const handleCompleteTasks = (idToComplete) => {
+    // * Colocando o toast fora do setTasks para não disparar o toast 2x de uma vez.
+    const taskTarget = tasks.find((task) => task.id === idToComplete);
+    if (taskTarget && !taskTarget.isComplete) {
+      toast.success("Good job! task completed.");
+    }
+
     setTasks((prevTasks) => {
       // * Percorrendo a lista até achar o id que queremos.
       return prevTasks.map((task) => {
         if (task.id !== idToComplete) return task;
-
-        const statusCompleted = !task.isComplete;
-        if (statusCompleted) {
-          toast.success("Good job! task completed!");
-        }
         // * Se achar ele vai inverter o valor booleano de "isComplete".
         return { ...task, isComplete: !task.isComplete };
       });
