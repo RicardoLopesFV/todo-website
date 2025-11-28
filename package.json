@@ -1,7 +1,9 @@
 {
-  "name": "todo-app",
+  "name": "todo-app-ricardo",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Um gerenciador de tarefas minimalista e moderno construído com React, Vite e Sass.",
+  "author": "Ricardo Lopes ricardolopesprog@gmail.com",
   "type": "module",
   "scripts": {
     "dev": "vite",
