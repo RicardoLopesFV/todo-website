@@ -5,6 +5,7 @@ export const useTodo = () => {
   // # ------------------ ESTADOS ------------------
   const [tasks, setTasks] = useState(() => {
     const saved = localStorage.getItem("tasks");
+
     return saved ? JSON.parse(saved) : [];
   });
 
@@ -19,10 +20,8 @@ export const useTodo = () => {
 
   // # ------------------- FUNÇÕES -------------------
   const handleAddTasks = (taskName) => {
-    // # Adicionando.
     const newTask = {
-      // # Criando a tarefa passando o nome (taskName).
-      id: crypto.randomUUID(), // ? id aleatório.
+      id: crypto.randomUUID(),
       text: taskName,
       isComplete: false,
     };
@@ -32,13 +31,11 @@ export const useTodo = () => {
   };
 
   const handleDeleteTasks = (idToDelete) => {
-    // # Deletando.
-    setTasks((prevTasks) => prevTasks.filter((task) => task.is !== idToDelete));
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== idToDelete));
     toast.error("Task deleted!");
   };
 
   const handleCompleteTasks = (idToComplete) => {
-    // # Completando
     // # Lógica do toast.
     const taskTarget = tasks.find((task) => task.id === idToComplete);
     if (taskTarget && !taskTarget.isComplete) {
@@ -47,20 +44,16 @@ export const useTodo = () => {
 
     // # Lógica de completar.
     setTasks((prevTasks) => {
-      // # Percorrendo a lista.
       return prevTasks.map((task) => {
-        // # senão achar ele volta a tarefa intacta.
         if (task.id !== idToComplete) return task;
-        // # se achar inverte o valor booleano de isComplete.
+
         return { ...task, isComplete: !task.isComplete };
       });
     });
   };
 
   const handleEditTasks = (idToEdit, newTask) => {
-    // # Editando
     setTasks((prevTasks) =>
-      // # Percorrendo a lista
       prevTasks.map((task) =>
         task.id === idToEdit ? { ...task, text: newTask } : task
       )
@@ -72,6 +65,7 @@ export const useTodo = () => {
     if (!task.text) {
       return false;
     }
+
     return task.text.toLowerCase().includes(searchInputText.toLowerCase());
   });
 

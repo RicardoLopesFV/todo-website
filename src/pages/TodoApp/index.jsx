@@ -3,10 +3,9 @@ import { TodoToolbar } from "../../components/TodoToolbar";
 import { TodoList } from "../../components/TodoList";
 import { TodoForm } from "../../components/TodoForm";
 import { Footer } from "../../components/Footer";
-import { useTodo } from "../../hooks/useTodo"; // ? Chamando hook
+import { useTodo } from "../../hooks/useTodo";
 import "./index.scss";
 
-// # NOVO CÉREBRO DA APLICAÇÃO.
 export const TodoApp = () => {
   /*
     ! Chamando o HOOK
